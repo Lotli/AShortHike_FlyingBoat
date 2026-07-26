@@ -1,10 +1,7 @@
 name: Build MelonLoader Mod
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,19 +11,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '6.0.x'
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v2
 
-    - name: Restore dependencies
-      run: dotnet restore
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore packages
+      run: nuget restore FlyingBoat.sln
 
     - name: Build project
-      run: dotnet build --configuration Release --no-restore
+      run: msbuild FlyingBoat.sln /p:Configuration=Release
 
-    - name: Upload artifact
+    - name: Upload DLL
       uses: actions/upload-artifact@v4
       with:
-        name: MelonMod
+        name: FlyingBoatMod
         path: bin/Release/**/*.dll
