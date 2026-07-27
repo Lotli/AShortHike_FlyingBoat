@@ -23,7 +23,7 @@ namespace Flying_Boat
 
         private void DrawMenu()
         {
-            GUI.Box(new Rect(10, 10, 150, 40), "Boat Glider\nᴮʸ ᴸᴼᵀᴸᴵ");
+            //GUI.Box(new Rect(10, 10, 150, 40), "Boat Glider\n By Lotli");
             //flyingForce = float.Parse(GUI.TextArea(new Rect(10, 40, 150, 20), "1000"));
         }
 
