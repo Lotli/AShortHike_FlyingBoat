@@ -3,6 +3,7 @@
 
 A mod that adds an ability to fly to A Short Hike boats. Press F to make your boat fly.
 
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)
 
 ## Set up and configuration
 ### Melon Loader
@@ -21,5 +22,3 @@ Install [BepInEx Melon Loader plugin](https://github.com/BepInEx/BepInEx.MelonLo
 ## Building with GitHub Actions
 
 To build run this [workflow](https://github.com/Lotli/AShortHike_FlyingBoat/actions/workflows/dotnet.yml) and download the artifacts.
-
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)
