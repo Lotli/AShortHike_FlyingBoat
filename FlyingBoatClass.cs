@@ -75,6 +75,8 @@ namespace Flying_Boat
             tailWing = new GameObject("TailWing");
             tailWing.transform.SetParent(GameObject.Find("Motor").transform);
             tailWing.transform.localPosition = Vector3.zero;
+            tailWing.transform.localRotation= Vector3.zero;
+            tailWing.transform.localScale = new Vector3(1,1,1);
             rightTailWing = GameObject.Instantiate(trailerShade, tailWing.transform);
             rightTailWing.name = "RightTailWing";
             rightTailWing.transform.localPosition = new Vector3(0.1f, 1, 2);
