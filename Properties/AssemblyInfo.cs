@@ -10,11 +10,11 @@ using Flying_Boat; // The namespace of your mod class
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Flying Boat")]
+[assembly: AssemblyTitle("FlyingBoat")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Flying Boat")]
+[assembly: AssemblyProduct("FlyingBoat")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
