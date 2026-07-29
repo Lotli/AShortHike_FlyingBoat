@@ -75,14 +75,14 @@ namespace Flying_Boat
             tailWing = new GameObject("TailWing");
             tailWing.transform.SetParent(GameObject.Find("Motor").transform);
             tailWing.transform.localPosition = Vector3.zero;
-            rightTailWing = GameObject.Instantiate(trailerShade, tailWing);
+            rightTailWing = GameObject.Instantiate(trailerShade, tailWing.transform);
             rightTailWing.name = "RightTailWing";
             rightTailWing.transform.localPosition = new Vector3(0.1f, 1, 2);
             rightTailWing.transform.localRotation = Quaternion.Euler(0, 90, 270);
             rightTailWing.transform.localScale = new Vector3(2, 1.5f, 0.1f);
             rightTailWing.GetComponent<MeshCollider>().enabled = false;
             rightTailWing.SetActive(true);
-            leftTailWing = GameObject.Instantiate(trailerShade, tailWing);
+            leftTailWing = GameObject.Instantiate(trailerShade, tailWing.transform);
             leftTailWing.name = "LeftTailWing";
             leftTailWing.transform.localPosition = new Vector3(-0.1f, 1, 2);
             leftTailWing.transform.localRotation = Quaternion.Euler(0, 270, 270);
