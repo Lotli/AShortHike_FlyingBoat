@@ -5,6 +5,12 @@ A mod that adds an ability to fly to A Short Hike boats. Press F to make your bo
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://choosealicense.com/licenses/gpl-3.0/)
 
+## Screenshots
+
+![Mod Screenshot 1](https://images.steamusercontent.com/ugc/12995935568944417176/75223DF2F0105B1BC74FD5CE6E2EB01EF789C7C5/?imw=1024&imh=665&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+![Mod Screenshot 2](https://images.steamusercontent.com/ugc/12583621201853898819/F6F6ED82F06A70C49D30029FD6E45BB88C968565/?imw=1024&imh=665&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+![Mod Screenshot 3](https://images.steamusercontent.com/ugc/12995935568944417176/75223DF2F0105B1BC74FD5CE6E2EB01EF789C7C5/?imw=1024&imh=665&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true)
+
 ## Set up and configuration
 ### Melon Loader
 **Install**\
