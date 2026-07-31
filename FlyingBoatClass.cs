@@ -44,6 +44,10 @@ namespace Flying_Boat
                 // Creating cosmetic wings for the boat
                 SpawnWings();
             }
+            else if (sceneName == "TitleScene")
+            {
+                MelonPreferences.Save();
+            }
         }
 
         public override void OnFixedUpdate()
