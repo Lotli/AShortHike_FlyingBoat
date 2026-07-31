@@ -27,7 +27,7 @@ namespace Flying_Boat
         {
             MelonEvents.OnGUI.Subscribe(DrawMenu, 100);
             flyingBoatPreferencesCategory = MelonPreferences.CreateCategory("FlyingBoat");
-            flyKeyEntry = flyingBoatPreferencesCategory.CreateEntry<string>("Fly Key Code", "F");
+            flyKeyEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyKeyCode", "F");
         }
 
         private void DrawMenu()
