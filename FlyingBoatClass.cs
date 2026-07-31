@@ -41,7 +41,7 @@ namespace Flying_Boat
             if (sceneName == "GameScene")
             {
                 flyKey = (KeyCode) System.Enum.Parse(typeof(KeyCode),flyKeyEntry.Value);
-                LoggerInstance.Log($"Fly key code: {flyKeyEntry.Value}");
+                LoggerInstance.Msg($"Fly key code: {flyKeyEntry.Value}");
                 // Creating cosmetic wings for the boat
                 SpawnWings();
             }
