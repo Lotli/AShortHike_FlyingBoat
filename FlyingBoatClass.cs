@@ -21,6 +21,7 @@ namespace Flying_Boat
         float flyingForce = 1000f;
         private MelonPreferences_Category flyingBoatPreferencesCategory;
         private MelonPreferences_Entry<string> flyKeyEntry;
+        private MelonPreferences_Entry<float> flyingForceEntry;
         private KeyCode flyKey;
 
         public override void OnInitializeMelon()
@@ -28,6 +29,8 @@ namespace Flying_Boat
             MelonEvents.OnGUI.Subscribe(DrawMenu, 100);
             flyingBoatPreferencesCategory = MelonPreferences.CreateCategory("FlyingBoat");
             flyKeyEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyKeyCode", "F");
+            flyingForceEntry = flyingBoatPreferencesCategory.CreateEntry<float>("FlyingForce", 1000);
+            flyingBoatPreferencesCategory.LoadFromFile();
         }
 
         private void DrawMenu()
@@ -41,6 +44,7 @@ namespace Flying_Boat
             if (sceneName == "GameScene")
             {
                 flyKey = (KeyCode) System.Enum.Parse(typeof(KeyCode),flyKeyEntry.Value);
+                flyingForce = flyingForceEntry.Value;
                 LoggerInstance.Msg($"Fly key code: {flyKeyEntry.Value}");
                 // Creating cosmetic wings for the boat
                 SpawnWings();
