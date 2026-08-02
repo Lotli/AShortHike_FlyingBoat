@@ -21,14 +21,17 @@ namespace Flying_Boat
         float flyingForce = 1000f;
         private MelonPreferences_Category flyingBoatPreferencesCategory;
         private MelonPreferences_Entry<string> flyKeyEntry;
+        private MelonPreferences_Entry<string> flyAxisEntry;
         private MelonPreferences_Entry<float> flyingForceEntry;
         private KeyCode flyKey;
+        private string flyAxis;
 
         public override void OnInitializeMelon()
         {
             MelonEvents.OnGUI.Subscribe(DrawMenu, 100);
             flyingBoatPreferencesCategory = MelonPreferences.CreateCategory("FlyingBoat");
             flyKeyEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyKeyCode", "F");
+            flyAxisEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyAxis", "Fire1");
             flyingForceEntry = flyingBoatPreferencesCategory.CreateEntry<float>("FlyingForce", 1000);
             flyingBoatPreferencesCategory.LoadFromFile();
         }
@@ -44,8 +47,11 @@ namespace Flying_Boat
             if (sceneName == "GameScene")
             {
                 flyKey = (KeyCode) System.Enum.Parse(typeof(KeyCode),flyKeyEntry.Value);
+                flyAxis = flyAxisEntry.Value;
                 flyingForce = flyingForceEntry.Value;
                 LoggerInstance.Msg($"Fly key code: {flyKeyEntry.Value}");
+                LoggerInstance.Msg($"Fly axis: {flyAxisEntry.Value}");
+                LoggerInstance.Msg($"Flying force: {flyingForceEntry.Value}");
                 // Creating cosmetic wings for the boat
                 SpawnWings();
             }
@@ -53,9 +59,12 @@ namespace Flying_Boat
 
         public override void OnFixedUpdate()
         {
-            if (Input.GetKey(flyKey) && boatRb != null)
+            if (boatRb != null)
             {
-                boatRb.AddForce(Vector3.up * flyingForce);
+                //For button input
+                boatRb.AddForce(Vector3.up * flyingForce * Convert.ToInt32(Input.GetKey(flyKey)));
+                //For axis
+                boatRb.AddForce(Vector3.up * flyingForce * Input.GetAxis(flyAxis));
             }
         }
 
