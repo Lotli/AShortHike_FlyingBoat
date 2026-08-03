@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using MelonLoader;
 using Flying_Boat; // The namespace of your mod class
 // ...
-[assembly: MelonInfo(typeof(FlyingBoatClass), "Flying Boat :3", "0.2.3", "Lotli")]
+[assembly: MelonInfo(typeof(FlyingBoatClass), "Flying Boat :3", "0.3.1", "Lotli")]
 [assembly: MelonGame("adamgryu", "A Short Hike")]
 
 // General Information about an assembly is controlled through the following

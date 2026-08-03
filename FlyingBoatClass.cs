@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using MelonLoader;
-using System.Numerics;
 
 namespace Flying_Boat
 {
@@ -21,19 +17,16 @@ namespace Flying_Boat
         float flyingForce = 1000f;
         private MelonPreferences_Category flyingBoatPreferencesCategory;
         private MelonPreferences_Entry<string> flyKeyEntry;
-        private MelonPreferences_Entry<string> flyAxisEntry;
         private MelonPreferences_Entry<float> flyingForceEntry;
         private KeyCode flyKey;
-        private string flyAxis;
+        Gamepad gamepad;
 
         public override void OnInitializeMelon()
         {
             MelonEvents.OnGUI.Subscribe(DrawMenu, 100);
             flyingBoatPreferencesCategory = MelonPreferences.CreateCategory("FlyingBoat");
             flyKeyEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyKeyCode", "F");
-            flyAxisEntry = flyingBoatPreferencesCategory.CreateEntry<string>("FlyAxis", "Fire1");
-            flyingForceEntry = flyingBoatPreferencesCategory.CreateEntry<float>("FlyingForce", 1000);
-            flyingBoatPreferencesCategory.LoadFromFile();
+            flyingForceEntry = flyingBoatPreferencesCategory.CreateEntry<float>("FlyingForce", 1000);            
         }
 
         private void DrawMenu()
@@ -46,12 +39,13 @@ namespace Flying_Boat
         {
             if (sceneName == "GameScene")
             {
+                //Loading values from preferences
+                flyingBoatPreferencesCategory.LoadFromFile();
                 flyKey = (KeyCode) System.Enum.Parse(typeof(KeyCode),flyKeyEntry.Value);
-                flyAxis = flyAxisEntry.Value;
                 flyingForce = flyingForceEntry.Value;
                 LoggerInstance.Msg($"Fly key code: {flyKeyEntry.Value}");
-                LoggerInstance.Msg($"Fly axis: {flyAxisEntry.Value}");
                 LoggerInstance.Msg($"Flying force: {flyingForceEntry.Value}");
+                gamepad = Gamepad.current;
                 // Creating cosmetic wings for the boat
                 SpawnWings();
             }
@@ -61,10 +55,16 @@ namespace Flying_Boat
         {
             if (boatRb != null)
             {
-                //For button input
-                boatRb.AddForce(Vector3.up * flyingForce * Convert.ToInt32(Input.GetKey(flyKey)));
-                //For axis
-                boatRb.AddForce(Vector3.up * flyingForce * Input.GetAxis(flyAxis));
+                if (gamepad != null)
+                {
+                    //For axis
+                    boatRb.AddForce(Vector3.up * flyingForce * (float) Math.Sqrt(1-Math.Pow(gamepad.rightTrigger.ReadValue()-1,2)));
+                }
+                if ((gamepad != null && gamepad.rightTrigger.ReadValue() == 0) || gamepad == null)
+                {
+                    //For button input
+                    boatRb.AddForce(Vector3.up * flyingForce * Convert.ToInt32(Input.GetKey(flyKey)));
+                }
             }
         }
 
